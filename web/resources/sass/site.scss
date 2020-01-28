@@ -1,0 +1,111 @@
+// Fabric
+@import "fabric/_References.scss";
+
+// Tags
+@import "tags/nav.scss";
+
+* {
+    color: $ms-color-black;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    transition: background .2s, color .2s;
+}
+
+body {
+    background: $ms-color-gray30;
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.jsp-content-layout {
+    display: flex;
+    flex: 1;
+
+    & > form {
+        background: $ms-color-white;
+        position: relative;
+        width: 25vw;
+
+        h1 {
+            margin: 1em;
+        }
+
+        div {
+            display: flex;
+            flex-flow: column;
+            margin: .5em 2em;
+        }
+
+        input, select {
+            margin-top: 4pt;
+            padding: .5em;
+        }
+
+        [type="submit"] {
+            align-items: center;
+            background: $ms-color-sharedGreenCyan10;
+            border: none;
+            bottom: 2em;
+            cursor: pointer;
+            display: flex;
+            flex-flow: row;
+            justify-content: center;
+            margin: 0 2em;
+            padding: .5em;
+            position: absolute;
+            width: -webkit-fill-available;
+
+            i {
+                margin: .5em;
+            }
+
+            i, p {
+                color: $ms-color-white;
+            }
+
+            &:hover {
+                background: rgba($ms-color-sharedGreenCyan10, .8);
+                box-shadow: -.5em -.5em 5em rgba($ms-color-white, 1), .5em .5em .5em rgba($ms-color-black, .2);
+            }
+        }
+    }
+
+    & > table {
+        width: 75vw;
+        border-collapse: collapse;
+
+        th {
+            background: $ms-color-white;
+            box-shadow: .5em .5em .5em rgba($ms-color-black, .2);
+        }
+        
+        th, td {
+            padding: .5em 2em;
+            text-align: left;
+        }
+        
+        tr {
+            &:hover{
+                background: $ms-color-gray20;
+            }
+        }
+        
+        i {
+            border: none;
+            border-radius: .5em;
+            padding: 1em;
+            
+            &.ms-Icon--Delete:hover {
+                background: $ms-color-sharedRed20;
+            }
+            
+            &:hover {
+                background: $ms-color-sharedGreenCyan10;
+                color: $ms-color-white;
+            }
+        }
+    }
+}

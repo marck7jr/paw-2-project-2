@@ -1,0 +1,41 @@
+@import "../fabric/_References";
+
+nav {
+    background: $ms-color-white;
+    box-shadow: -.5em -.5em 1em rgba($ms-color-white, 1), .5em .5em 1em rgba($ms-color-black, .2);
+
+    &, a {
+        display: flex;
+        flex-flow: row;
+    }
+
+    a {
+        align-items: center;
+        text-decoration: none;
+        margin: 0 .5em;
+        padding: .5em 0;
+
+        &[active] {
+            box-shadow: inset 0 -2pt rgba($ms-color-sharedGreenCyan10, 1);
+
+            * {
+                color: $ms-color-black;
+                font-weight: bold;
+            }
+        }
+
+        i {
+            margin: .5em;
+        }
+
+        i, p {
+            color: $ms-color-gray130;
+        }
+
+        &:hover {
+            i, p {
+                color: $ms-color-black;
+            }
+        }
+    }
+}
