@@ -5,9 +5,9 @@
  */
 package Servlets;
 
-import Annotations.DataAccessObject;
+import CDI.DataAccessObject;
 import Models.Account;
-import Services.AccountDAO;
+import DAO.AccountDAO;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -43,6 +43,8 @@ public class AccountServlet extends HttpServlet {
             throws ServletException, IOException {
 
         response.setContentType("text/html;charset=UTF-8");
+        request.setAttribute("entity", entity);
+        request.setAttribute("dao", dao);
         request.getRequestDispatcher("resources/jsp/Account.jsp").forward(request, response);
     }
 

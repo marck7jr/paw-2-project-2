@@ -10,10 +10,7 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="x" tagdir="/WEB-INF/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<jsp:useBean id="dao" class="Services.CartDAO"/>
-<jsp:useBean id="_dao" class="Services.AccountDAO"/>
 <c:if test="${empty param.edit}">
-    <jsp:useBean id="entity" class="Models.Cart"/>
     <jsp:setProperty name="entity" property="id"/>
     <jsp:setProperty name="entity" property="account" value="${_dao.find(param.account)}"/>
     <jsp:setProperty name="entity" property="items"/>

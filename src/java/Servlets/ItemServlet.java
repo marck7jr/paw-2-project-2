@@ -5,8 +5,13 @@
  */
 package Servlets;
 
+import CDI.DataAccessObject;
+import DAO.CartDAO;
+import DAO.ItemDAO;
+import DAO.ProductDAO;
+import Models.Item;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +24,21 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ItemServlet", urlPatterns = {"/items"})
 public class ItemServlet extends HttpServlet {
+    
+    @Inject
+    private Item entity;
+    
+    @Inject
+    @DataAccessObject
+    private ItemDAO dao;
+    
+    @Inject
+    @DataAccessObject
+    private CartDAO _dao;
+    
+    @Inject
+    @DataAccessObject
+    private ProductDAO __dao;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,6 +52,10 @@ public class ItemServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setAttribute("entity", entity);
+        request.setAttribute("dao", dao);
+        request.setAttribute("_dao", _dao);
+        request.setAttribute("__dao", __dao);
         request.getRequestDispatcher("resources/jsp/Item.jsp").forward(request, response);
     }
 

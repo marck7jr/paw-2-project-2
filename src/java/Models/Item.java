@@ -10,8 +10,10 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -20,11 +22,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
+@SequenceGenerator(name = "item_seq", sequenceName = "item_id_seq", allocationSize = 1)
 public class Item implements Serializable, IEntity {
 
     @Id
     @Column
-    @GeneratedValue
+    @GeneratedValue(generator = "item_seq", strategy = GenerationType.SEQUENCE)
     private long id;
     @OneToOne(targetEntity = Product.class)
     private Product product;

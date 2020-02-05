@@ -5,9 +5,10 @@
  */
 package Servlets;
 
-import Annotations.DataAccessObject;
+import CDI.DataAccessObject;
+import DAO.DepartmentDAO;
 import Models.Product;
-import Services.ProductDAO;
+import DAO.ProductDAO;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -30,6 +31,10 @@ public class ProductServlet extends HttpServlet {
     @DataAccessObject
     private ProductDAO dao;
     
+    @Inject
+    @DataAccessObject
+    private DepartmentDAO _dao;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -42,6 +47,9 @@ public class ProductServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setAttribute("entity", entity);
+        request.setAttribute("dao", dao);
+        request.setAttribute("_dao", _dao);
         request.getRequestDispatcher("resources/jsp/Product.jsp").forward(request, response);
     }
 

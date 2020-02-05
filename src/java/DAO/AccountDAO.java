@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Services;
+package DAO;
 
-import Annotations.DataAccessObject;
+import CDI.DataAccessObject;
 import Models.Account;
 import java.util.List;
 import javax.persistence.EntityManager;

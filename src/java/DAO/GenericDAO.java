@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Services;
+package DAO;
 
 import Contracts.IDAO;
 import Contracts.IEntity;
 import java.io.Serializable;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  *
@@ -27,7 +27,8 @@ public abstract class GenericDAO<T extends IEntity & Serializable> implements ID
     /**
      *
      */
-    protected EntityManagerFactory _entityManagerFactory = Persistence.createEntityManagerFactory("pawPU");
+    @Inject
+    protected EntityManagerFactory _entityManagerFactory;
 
     @Override
     public void save(T t) {

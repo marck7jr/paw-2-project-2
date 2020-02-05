@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Services;
+package DAO;
 
+import CDI.DataAccessObject;
 import Models.Product;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -14,6 +15,7 @@ import javax.persistence.Query;
  *
  * @author lucim
  */
+@DataAccessObject
 public class ProductDAO extends GenericDAO<Product> {
     
     public ProductDAO(){

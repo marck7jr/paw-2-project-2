@@ -5,9 +5,9 @@
  */
 package Servlets;
 
-import Annotations.DataAccessObject;
+import CDI.DataAccessObject;
 import Models.Offer;
-import Services.OfferDAO;
+import DAO.OfferDAO;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -40,6 +40,8 @@ public class OfferServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setAttribute("entity", entity);
+        request.setAttribute("dao", dao);
         request.getRequestDispatcher("resources/jsp/Offer.jsp").forward(request, response);
     }
 

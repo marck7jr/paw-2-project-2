@@ -11,7 +11,9 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 
@@ -21,9 +23,10 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table
+@SequenceGenerator(name = "account_seq", sequenceName = "account_id_seq", allocationSize = 1)
 public class Account implements Serializable, IEntity {
     @Column
-    @GeneratedValue
+    @GeneratedValue(generator = "account_seq", strategy = GenerationType.SEQUENCE)
     @Id
     private long id;
     private String name;

@@ -5,8 +5,12 @@
  */
 package Servlets;
 
+import CDI.DataAccessObject;
+import DAO.AccountDAO;
+import DAO.CartDAO;
+import Models.Cart;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +23,17 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "CartServlet", urlPatterns = {"/carts"})
 public class CartServlet extends HttpServlet {
+    
+    @Inject
+    Cart entity;
+    
+    @Inject
+    @DataAccessObject
+    CartDAO dao;
+    
+    @Inject
+    @DataAccessObject
+    AccountDAO _dao;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,6 +47,9 @@ public class CartServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        request.setAttribute("entity", entity);
+        request.setAttribute("dao", dao);
+        request.setAttribute("_dao", _dao);
         request.getRequestDispatcher("resources/jsp/Cart.jsp").forward(request, response);
     }
 

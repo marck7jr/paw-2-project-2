@@ -10,7 +10,9 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 /**
@@ -19,11 +21,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table
+@SequenceGenerator(name = "offer_seq", sequenceName = "offer_id_seq", allocationSize = 1)
 public class Offer implements Serializable, IEntity {
 
     @Id
     @Column
-    @GeneratedValue
+    @GeneratedValue(generator = "offer_seq", strategy = GenerationType.SEQUENCE)
     private long id;
     private String code;
     private double discount;

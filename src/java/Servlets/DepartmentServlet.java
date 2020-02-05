@@ -5,11 +5,10 @@
  */
 package Servlets;
 
-import Annotations.DataAccessObject;
+import CDI.DataAccessObject;
 import Models.Department;
-import Services.DepartmentDAO;
+import DAO.DepartmentDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -42,7 +41,9 @@ public class DepartmentServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");        
+        response.setContentType("text/html;charset=UTF-8");
+        request.setAttribute("entity", entity);
+        request.setAttribute("dao", dao);
         request.getRequestDispatcher("resources/jsp/Department.jsp").forward(request, response);
     }
 
